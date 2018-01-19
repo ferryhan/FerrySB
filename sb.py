@@ -47,9 +47,9 @@ while True:
                         if msg.toType == 2:
                             client.sendChatChecked(receiver, msg_id)
                             contact = client.getContact(sender)
-                            if text.lower() == 'me':
+                            if text.lower() == 'Me':
                                 client.sendMessage(receiver, None, contentMetadata={'mid': sender}, contentType=13)
-                            elif text.lower() == 'speed':
+                            elif text.lower() == 'Sp':
                                 start = time.time()
                                 client.sendText(receiver, "TestSpeed")
                                 elapsed_time = time.time() - start
@@ -70,7 +70,7 @@ while True:
                                     client.sendImageWithURL(receiver, a)
                                 except Exception as e:
                                     client.sendText(receiver, str(e))
-                            elif text.lower() == 'tagall':
+                            elif text.lower() == 'Call':
                                 group = client.getGroup(msg.to)
                                 nama = [contact.mid for contact in group.members]
                                 nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
@@ -122,8 +122,8 @@ while True:
                                     for m in range(401, len(nama)):
                                         nm5 += [nama[m]]
                                     client.mention(msg.to, nm5)             
-                                client.sendText(receiver, "Members :"+str(jml))
-                            elif text.lower() == 'ceksider':
+                                client.sendText(receiver, "Jumlah Members :"+str(jml))
+                            elif text.lower() == 'Kamera':
                                 try:
                                     del cctv['point'][msg.to]
                                     del cctv['sidermem'][msg.to]
@@ -138,7 +138,7 @@ while True:
                                     cctv['cyduk'][msg.to]=False
                                     client.sendText(msg.to, cctv['sidermem'][msg.to])
                                 else:
-                                    client.sendText(msg.to, "Heh belom di Set")
+                                    client.sendText(msg.to, "Sya Lupa belom di Set")
                 except Exception as e:
                     client.log("[SEND_MESSAGE] ERROR : " + str(e))
 
